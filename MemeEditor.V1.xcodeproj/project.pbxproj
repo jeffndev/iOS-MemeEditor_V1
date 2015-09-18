@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BD4052491BAC6967002D4C6A /* MemeData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD4052481BAC6967002D4C6A /* MemeData.swift */; settings = {ASSET_TAGS = (); }; };
 		BDD403DD1BAB6A3400483F58 /* UIImage+Resizing.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDD403DC1BAB6A3400483F58 /* UIImage+Resizing.swift */; settings = {ASSET_TAGS = (); }; };
 		BDF033241BAB1C7E00AB54FB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDF033231BAB1C7E00AB54FB /* AppDelegate.swift */; };
 		BDF033261BAB1C7E00AB54FB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDF033251BAB1C7E00AB54FB /* ViewController.swift */; };
@@ -35,6 +36,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		BD4052481BAC6967002D4C6A /* MemeData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemeData.swift; sourceTree = "<group>"; };
 		BDD403DC1BAB6A3400483F58 /* UIImage+Resizing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Resizing.swift"; sourceTree = "<group>"; };
 		BDF033201BAB1C7E00AB54FB /* MemeEditor.V1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MemeEditor.V1.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BDF033231BAB1C7E00AB54FB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -106,6 +108,7 @@
 				BDF0332C1BAB1C7E00AB54FB /* LaunchScreen.storyboard */,
 				BDF0332F1BAB1C7E00AB54FB /* Info.plist */,
 				BDD403DC1BAB6A3400483F58 /* UIImage+Resizing.swift */,
+				BD4052481BAC6967002D4C6A /* MemeData.swift */,
 			);
 			name = MemeEditor.V1;
 			path = MemeUIMocks;
@@ -264,6 +267,7 @@
 				BDD403DD1BAB6A3400483F58 /* UIImage+Resizing.swift in Sources */,
 				BDF033261BAB1C7E00AB54FB /* ViewController.swift in Sources */,
 				BDF033241BAB1C7E00AB54FB /* AppDelegate.swift in Sources */,
+				BD4052491BAC6967002D4C6A /* MemeData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

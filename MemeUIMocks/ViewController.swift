@@ -20,6 +20,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     @IBOutlet weak var bottomToolbar: UIToolbar!
     //state variables...
     var framePushedUp = false
+    var currentMemedImage: UIImage?
     
     //member CONSTANTS
     let memeTextAttributes = [
@@ -87,20 +88,24 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     //ACTION methods
     @IBAction func shareAction() {
-        let memedImage = extractMemedImage()
-        let shareViewController = UIActivityViewController(activityItems: [memedImage],applicationActivities: nil)
+        let currentMemedImage = extractMemedImage()
+        let shareViewController = UIActivityViewController(activityItems: [currentMemedImage],applicationActivities: nil)
         if #available(iOS 8.0, *) {
             shareViewController.completionWithItemsHandler = {
                 (activity, success, items, error) in
+                self.saveMeme()
                 self.dismissViewControllerAnimated(true, completion: nil)
             }
-        } 
+        } else {
+            saveMeme()
+        }
         self.presentViewController(shareViewController, animated: true, completion: nil)
     }
     @IBAction func cancelAction(){
         mainImage.image = nil
+        currentMemedImage = nil
         resetTextFieldsToDefaults()
-        actionToolBtn.enabled=false
+        actionToolBtn.enabled = false
     }
     @IBAction func cameraAction(){
         //take a picture and use that picture for the meme
@@ -127,9 +132,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         bottomTextField.text = DEFAULT_BOTTOM_TEXT
     }
     func extractMemedImage() -> UIImage {
-        //UIGraphicsBeginImageContext(self.mainImage.frame.size)
-        //self.mainImage.drawViewHierarchyInRect(self.mainImage.frame, afterScreenUpdates: true)
-        
         topToolbar.hidden = true
         bottomToolbar.hidden = true
         
@@ -142,7 +144,12 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         bottomToolbar.hidden = false
         return mi
     }
-    
+    func saveMeme(){
+        if currentMemedImage != nil {
+            let _ = MemeData( image: mainImage.image, memedImage: currentMemedImage, topText: topTextField.text, bottomText: bottomTextField.text)
+            //This is left hanging at this point.  We don't have a use-case for doing anything with this MemeData object as yet.
+        }
+    }
     //Image Picker DELEGATES
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
         
@@ -158,7 +165,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     //Text Field DELEGATES
     
     func textFieldDidBeginEditing(textField: UITextField) {
-        print("tf did begin editing")
         if textField.tag == TOP_TEXT_TAG && textField.text == DEFAULT_TOP_TEXT{
             textField.text = ""
         }else if textField.tag == BOTTOM_TEXT_TAG && textField.text == DEFAULT_BOTTOM_TEXT{
