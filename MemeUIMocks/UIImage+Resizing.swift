@@ -10,7 +10,6 @@ import UIKit
 
 extension UIImage {
     public func resize(size:CGSize, completionHandler:(resizedImage:UIImage, data:NSData)->()) {
-        if #available(iOS 8.0, *) {
             dispatch_async(dispatch_get_global_queue(QOS_CLASS_USER_INITIATED, 0), { () -> Void in
                 let newSize:CGSize = size
                 let rect = CGRectMake(0, 0, newSize.width, newSize.height)
@@ -23,9 +22,6 @@ extension UIImage {
                     completionHandler(resizedImage: newImage, data:imageData!)
                 })
             })
-        } else {
-            // Fallback on earlier versions
-        }
     }
     
     

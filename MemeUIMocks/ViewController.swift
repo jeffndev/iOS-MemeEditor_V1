@@ -90,15 +90,11 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     @IBAction func shareAction() {
         let currentMemedImage = extractMemedImage()
         let shareViewController = UIActivityViewController(activityItems: [currentMemedImage],applicationActivities: nil)
-        if #available(iOS 8.0, *) {
-            shareViewController.completionWithItemsHandler = {
+        shareViewController.completionWithItemsHandler = {
                 (activity, success, items, error) in
                 self.saveMeme()
                 self.dismissViewControllerAnimated(true, completion: nil)
             }
-        } else {
-            saveMeme()
-        }
         self.presentViewController(shareViewController, animated: true, completion: nil)
     }
     @IBAction func cancelAction(){
